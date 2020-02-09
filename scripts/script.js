@@ -1,8 +1,8 @@
 let searchCity = function () {
-  console.log("Szukam miast");
+  //console.log("Szukam miast");
   let inputValue = document.getElementById("citySelection").value;
-  console.log(inputValue);
-}
+  //console.log(inputValue);
+};
 
 let createCityHeading = function (li, headingText) {
   let divHeader = document.createElement("div");
@@ -26,7 +26,7 @@ let createCityHeading = function (li, headingText) {
   divHeader.appendChild(removeCityDiv);
 
   li.appendChild(divHeader);
-}
+};
 
 let createCityLoader = function (li) {
   let divContent = document.createElement("div");
@@ -37,7 +37,7 @@ let createCityLoader = function (li) {
   divLoader.innerHTML = "Ładowanie...";
   divContent.appendChild(divLoader);
   li.appendChild(divContent);
-}
+};
 
 let getWeatherInfo = function (inputValue, li) {
 
@@ -45,13 +45,10 @@ let getWeatherInfo = function (inputValue, li) {
   let regexZipcode = new RegExp("^\\d\\d-\\d\\d\\d$");
   let apiQuery;
   if (regexZipcode.test(inputValue)) {
-    console.log("zip");
     apiQuery = "http://api.openweathermap.org/data/2.5/weather?zip=" + inputValue + ",pl&appid=06b943a95cb96f43870fe4b241feb758&units=metric&lang=pl";
   } else {
-    console.log("cit");
     apiQuery = "http://api.openweathermap.org/data/2.5/weather?q=" + inputValue + ",pl&appid=06b943a95cb96f43870fe4b241feb758&units=metric&lang=pl";
   }
-  console.log(inputValue);
 
   getRequest.open('GET', apiQuery);
   getRequest.onload = function () {
@@ -60,19 +57,17 @@ let getWeatherInfo = function (inputValue, li) {
       setUpWeatherInfo(receivedData, li);
     }, 1000);
 
-  }
+  };
   getRequest.send();
 
-}
+};
 
 let setUpWeatherInfo = function (receivedData, li) {
-  //let cityLi = document.querySelectorAll(li.classList[0]);
   receivedData = JSON.parse(receivedData);
   if (receivedData.cod == 404) {
     li.querySelector(".specificInfo").innerHTML = "Nie znaleziono miasta";
     return;
   }
-  console.log(receivedData);
   li.querySelector("h2").innerHTML = receivedData.name + ", " + receivedData.weather[0].description;
   li.querySelector(".specificInfo").innerHTML =
     '<div class="specificInfoLeft">' +
@@ -88,10 +83,9 @@ let setUpWeatherInfo = function (receivedData, li) {
     'Odczuwalna: ' + receivedData.main.feels_like + '&ordm;C' +
     '</p>' +
     '</div>';
-}
+};
 
 let addCity = function () {
-  console.log("Adding city...");
   let inputValue = document.getElementById("citySelection").value;
   let addedCities = document.getElementById("addedCities");
   let ul = document.getElementById("list");
@@ -104,7 +98,7 @@ let addCity = function () {
   li.style.opacity = 1;
 
   getWeatherInfo(inputValue, li);
-}
+};
 
 let setClock = function () {
   let clocks = document.querySelectorAll(".clock");
@@ -143,10 +137,10 @@ let setClock = function () {
     }
 
     document.querySelector(".footerYear").innerHTML = footerYearMsg;
-  }
+  };
   getRequest.send();
 
-}
+};
 
 let switchLoadingScreen = function (shouldEnable = " ") {
   let loadingScreen = document.getElementById("loadingScreen");
@@ -163,8 +157,7 @@ let switchLoadingScreen = function (shouldEnable = " ") {
     window.getComputedStyle(loadingScreen).getPropertyValue("opacity") == 0 ? switchLoadingScreen(true) : switchLoadingScreen(false);
   }
 
-
-}
+};
 
 document.getElementById("citySelection").addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
@@ -174,10 +167,9 @@ document.getElementById("citySelection").addEventListener('keypress', function (
 
 document.getElementById("citySelection").addEventListener("input", function () {
   searchCity();
-})
+});
 
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("Witaj w aplikacji!");
   setClock();
   setTimeout(function () {
     switchLoadingScreen();
@@ -185,5 +177,4 @@ document.addEventListener("DOMContentLoaded", function () {
   window.setInterval(function () {
     setClock();
   }, 5000);
-
-})
+});
