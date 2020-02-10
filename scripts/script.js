@@ -4,6 +4,13 @@ let searchCity = function () {
   //console.log(inputValue);
 };
 
+let removeAllCities = function () {
+
+  localStorage.removeItem("cities");
+  dynamicallyRefresh();
+
+};
+
 let createCityHeading = function (li, headingText) {
   let divHeader = document.createElement("div");
   divHeader.classList.add("container");
@@ -83,8 +90,8 @@ let setUpWeatherInfo = function (receivedData, li, addToLocalStorage = true) {
   li.querySelector(".specificInfo").innerHTML =
     '<div class="specificInfoLeft">' +
     '<p>Ciśnienie <span>' + receivedData.main.pressure + ' hPa</span></p>' +
-    '<p>Wilgotność <span>' + receivedData.main.humidity + '</span></p>' +
-    '<p>Wiatr <span>' + receivedData.wind.speed + '</span><img src="/wind.png" alt="" class="windImg" style="transform: rotate(' + receivedData.wind.deg + 'deg"></p>' +
+    '<p>Wilgotność <span>' + receivedData.main.humidity + ' %</span></p>' +
+    '<p>Wiatr <span>' + receivedData.wind.speed + 'm/s</span><img src="/wind.png" alt="" class="windImg" style="transform: rotate(' + receivedData.wind.deg + 'deg"></p>' +
     '</div>' +
     '<div class="specificInfoRight">' +
     '<p class="degrees">' +
@@ -154,7 +161,7 @@ let setClock = function () {
 
 };
 
-let addCityToLocalStorage = function(receivedData) {
+let addCityToLocalStorage = function (receivedData) {
   let storedCities;
   if (localStorage.getItem("cities") == undefined || localStorage.getItem("cities").length == 0) {
     localStorage.setItem("cities", {});
@@ -199,7 +206,9 @@ let removeCityFromList = function (elem) {
   if (!(localStorage.getItem("cities") === null) || localStorage.getItem("cities") != undefined) {
     if (localStorage.getItem("cities").length != 0) {
       storedCities = JSON.parse(localStorage.getItem("cities"));
-      console.log("To remove " + storedCities.indexOf({"name":cityNameToRemove}) + " " +  cityNameToRemove);
+      console.log("To remove " + storedCities.indexOf({
+        "name": cityNameToRemove
+      }) + " " + cityNameToRemove);
 
       for (let i = 0; i < storedCities.length; i++) {
         if (storedCities[i].name == cityNameToRemove) {
@@ -209,7 +218,7 @@ let removeCityFromList = function (elem) {
         }
       }
 
-      
+
       localStorage.setItem("cities", JSON.stringify(storedCities));
       // document.getElementById("addedCities").innerHTML = " ";
       // for (city of storedCities) {
@@ -246,6 +255,8 @@ let dynamicallyRefresh = function () {
         console.log(city.name);
       }
     }
+  } else {
+    document.getElementById("addedCities").innerHTML = "";
   }
 
 }

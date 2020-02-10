@@ -1,4 +1,6 @@
 $maxWidth: 700px;
+$borderColor: #bbbbbb;
+$blue: #519bce;
 
 .loader,
 .loader:after {
@@ -67,7 +69,7 @@ $maxWidth: 700px;
   transition: opacity 175ms ease-in-out;
 }
 
-#loadingScreen > * {
+#loadingScreen>* {
   margin-bottom: 10px;
 }
 
@@ -110,17 +112,17 @@ p {
 }
 
 a {
-  color: #fff898;
+  color: $blue;
   transition: color 175ms ease-in-out;
 }
 
 a:hover {
-  color: #fffbe7;
+  color: #bbbbbb;
 }
 
 nav {
   min-height: 60px;
-  padding: 5px;
+  padding: 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -143,8 +145,6 @@ main>div {
   display: flex;
   flex-direction: column;
   max-width: $maxWidth;
-  width: 100%;
-  flex-wrap: wrap;
   background-color: #eee;
   border-radius: 10px;
   box-shadow: 0 1px 5px #ccc;
@@ -159,24 +159,42 @@ main>div {
 }
 
 .appHeader {
-  padding: 10px;
+  background: url(./../background.jpg) no-repeat center center;
+  color: #FFF;
+  border-radius: 10px 10px 0px 0px;
+  text-shadow: 0 1px 3px #0e0e0e;
+  background-size: cover;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  box-shadow: 0 1px 5px #ccc;
+}
+
+.howToUseInfo {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .subHeader {
   padding: 10px;
   font-size: .8rem;
+  border-bottom: 1px solid $borderColor;
+  justify-content: flex-end;
+}
+
+.subHeader span {
+  margin-left: 5px;
 }
 
 .welcomeMessage {
   font-size: 2rem;
+  font-weight: bold;
 }
 
 .howToUseInfo {
   font-size: .8rem;
-  padding: 2px;
   margin-bottom: 2px;
 }
 
@@ -221,13 +239,14 @@ main>div {
 #addedCities>li {
   opacity: 0;
   transition: opacity 175ms ease-in-out;
-  border-bottom: 1px solid #d64f00;
+  border-bottom: 1px solid $borderColor;
   padding: 15px;
   margin-bottom: 10px;
 }
 
 .city {
-  padding: 10px 0px;
+  padding: 5px 0px;
+  align-items: flex-start;
 }
 
 .cityBasicInfo {
@@ -248,15 +267,21 @@ main>div {
 
 .dynamicRefreshSpan {
   font-size: .8rem;
-  padding: 4px;
+  padding: 5px 7px;
   text-decoration: underline;
   cursor: pointer;
-  transition: color 175ms ease-in-out;
-  flex: 2;
+  transition: background-color 175ms ease-in-out, color 175ms ease-in-out;
   align-items: flex-end;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.dynamicRefreshSpan:hover {
+  background-color: $blue;
+  color: #FFF;
 }
 
 .specificInfoRight {
@@ -269,6 +294,9 @@ main>div {
 .degrees {
   font-size: 4rem;
   font-weight: bold;
+  background: url(./../deg_background.jpg) no-repeat center center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .degreesRealFeel {
@@ -281,7 +309,7 @@ main>div {
 }
 
 .windImg {
-  height: 2rem;
+  height: 1.8rem;
   overflow: hidden;
   padding: 5px;
 }
@@ -300,7 +328,7 @@ main>div {
 }
 
 .removeCity:hover {
-  color: #494949;
+  color: $blue;
 }
 
 footer {
@@ -308,11 +336,22 @@ footer {
   padding: 5px;
   max-width: $maxWidth;
   width: 100%;
+  margin-bottom: 50px;
+  color: #0e0e0e;
 }
 
 @media only screen and (max-width: 700px) {
   .appHeader {
     flex-direction: column;
+  }
+
+  .removeCity {
+    align-self: flex-end;
+  }
+
+  main > div {
+    margin: 7px;
+    max-width: calc(100vw - 14px);
   }
 
   #citySelection {
@@ -322,7 +361,7 @@ footer {
   .city {
     flex-direction: column-reverse;
   }
-  
+
   footer {
     text-align: center;
   }

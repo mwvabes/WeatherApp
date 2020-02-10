@@ -115,18 +115,18 @@ p {
 }
 
 a {
-  color: #fff898;
+  color: #519bce;
   -webkit-transition: color 175ms ease-in-out;
   transition: color 175ms ease-in-out;
 }
 
 a:hover {
-  color: #fffbe7;
+  color: #bbbbbb;
 }
 
 nav {
   min-height: 60px;
-  padding: 5px;
+  padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -173,9 +173,6 @@ main > div {
       -ms-flex-direction: column;
           flex-direction: column;
   max-width: 700px;
-  width: 100%;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   background-color: #eee;
   border-radius: 10px;
   -webkit-box-shadow: 0 1px 5px #ccc;
@@ -201,7 +198,12 @@ main > div {
 }
 
 .appHeader {
-  padding: 10px;
+  background: url(./../background.jpg) no-repeat center center;
+  color: #FFF;
+  border-radius: 10px 10px 0px 0px;
+  text-shadow: 0 1px 3px #0e0e0e;
+  background-size: cover;
+  padding: 30px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -211,20 +213,36 @@ main > div {
           flex-direction: column;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-shadow: 0 1px 5px #ccc;
+          box-shadow: 0 1px 5px #ccc;
+}
+
+.howToUseInfo {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .subHeader {
   padding: 10px;
   font-size: .8rem;
+  border-bottom: 1px solid #bbbbbb;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.subHeader span {
+  margin-left: 5px;
 }
 
 .welcomeMessage {
   font-size: 2rem;
+  font-weight: bold;
 }
 
 .howToUseInfo {
   font-size: .8rem;
-  padding: 2px;
   margin-bottom: 2px;
 }
 
@@ -280,13 +298,16 @@ main > div {
   opacity: 0;
   -webkit-transition: opacity 175ms ease-in-out;
   transition: opacity 175ms ease-in-out;
-  border-bottom: 1px solid #d64f00;
+  border-bottom: 1px solid #bbbbbb;
   padding: 15px;
   margin-bottom: 10px;
 }
 
 .city {
-  padding: 10px 0px;
+  padding: 5px 0px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .cityBasicInfo {
@@ -316,14 +337,11 @@ main > div {
 
 .dynamicRefreshSpan {
   font-size: .8rem;
-  padding: 4px;
+  padding: 5px 7px;
   text-decoration: underline;
   cursor: pointer;
-  -webkit-transition: color 175ms ease-in-out;
-  transition: color 175ms ease-in-out;
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  -webkit-transition: background-color 175ms ease-in-out, color 175ms ease-in-out;
+  transition: background-color 175ms ease-in-out, color 175ms ease-in-out;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -336,6 +354,13 @@ main > div {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.dynamicRefreshSpan:hover {
+  background-color: #519bce;
+  color: #FFF;
 }
 
 .specificInfoRight {
@@ -354,6 +379,9 @@ main > div {
 .degrees {
   font-size: 4rem;
   font-weight: bold;
+  background: url(./../deg_background.jpg) no-repeat center center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .degreesRealFeel {
@@ -366,7 +394,7 @@ main > div {
 }
 
 .windImg {
-  height: 2rem;
+  height: 1.8rem;
   overflow: hidden;
   padding: 5px;
 }
@@ -396,7 +424,7 @@ main > div {
 }
 
 .removeCity:hover {
-  color: #494949;
+  color: #519bce;
 }
 
 footer {
@@ -404,6 +432,8 @@ footer {
   padding: 5px;
   max-width: 700px;
   width: 100%;
+  margin-bottom: 50px;
+  color: #0e0e0e;
 }
 
 @media only screen and (max-width: 700px) {
@@ -412,6 +442,14 @@ footer {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  .removeCity {
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
+  main > div {
+    margin: 7px;
+    max-width: calc(100vw - 14px);
   }
   #citySelection {
     width: 90vw;
