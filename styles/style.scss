@@ -58,13 +58,12 @@ $maxWidth: 700px;
   left: 0;
   bottom: 0;
   z-index: 9999;
-  background-color: #005f08;
+  background-color: #d8d8d8;
   display: flex;
   opacity: 1;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  color: #eeeeee;
   transition: opacity 175ms ease-in-out;
 }
 
@@ -77,9 +76,8 @@ $maxWidth: 700px;
 }
 
 body {
-  background-color: #005f08;
-  background-image: url(./bg.png);
-  color: #eeeeee;
+  background-color: #fafafa;
+  color: #6e6e6e;
   font-family: 'Noto Sans JP', sans-serif;
 }
 
@@ -147,14 +145,29 @@ main>div {
   max-width: $maxWidth;
   width: 100%;
   flex-wrap: wrap;
-  background-color: #ffffff;
-  color: #d64f00;
+  background-color: #eee;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px #ccc;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .appHeader {
   padding: 10px;
-  background-color: #e9a142;
-  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.subHeader {
+  padding: 10px;
+  font-size: .8rem;
 }
 
 .welcomeMessage {
@@ -164,18 +177,7 @@ main>div {
 .howToUseInfo {
   font-size: .8rem;
   padding: 2px;
-  background-color: #feffdf;
-  color: #494949;
   margin-bottom: 2px;
-  border: 1px solid #d64f00;
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
 }
 
 #citySelection {
@@ -230,12 +232,31 @@ main>div {
 
 .cityBasicInfo {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 8;
+}
+
+.weatherName {
+  font-size: .95rem;
+  text-transform: uppercase;
 }
 
 .zipCode {
   font-size: .8rem;
+}
+
+.dynamicRefreshSpan {
+  font-size: .8rem;
+  padding: 4px;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 175ms ease-in-out;
+  flex: 2;
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 .specificInfoRight {
@@ -266,12 +287,16 @@ main>div {
 }
 
 .removeCity {
-  color: #9b9b9b;
   font-size: .8rem;
   padding: 4px;
   text-decoration: underline;
   cursor: pointer;
   transition: color 175ms ease-in-out;
+  flex: 2;
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 .removeCity:hover {
