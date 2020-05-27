@@ -57,9 +57,9 @@ let getWeatherInfo = function (inputValue, li, addToLocalStorage = true) {
   let regexZipcode = new RegExp("^\\d\\d-\\d\\d\\d$");
   let apiQuery;
   if (regexZipcode.test(inputValue)) {
-    apiQuery = "http://api.openweathermap.org/data/2.5/weather?zip=" + inputValue + ",pl&appid=06b943a95cb96f43870fe4b241feb758&units=metric&lang=pl";
+    apiQuery = "https://api.openweathermap.org/data/2.5/weather?zip=" + inputValue + ",pl&appid=06b943a95cb96f43870fe4b241feb758&units=metric&lang=pl";
   } else {
-    apiQuery = "http://api.openweathermap.org/data/2.5/weather?q=" + inputValue + ",pl&appid=06b943a95cb96f43870fe4b241feb758&units=metric&lang=pl";
+    apiQuery = "https://api.openweathermap.org/data/2.5/weather?q=" + inputValue + ",pl&appid=06b943a95cb96f43870fe4b241feb758&units=metric&lang=pl";
   }
 
   getRequest.open('GET', apiQuery);
