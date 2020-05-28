@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&display=swap');
+
 $maxWidth: 700px;
 $borderColor: #bbbbbb;
 $blue: #519bce;
@@ -84,7 +86,8 @@ $blue: #519bce;
 body {
   background-color: #fafafa;
   color: #6e6e6e;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
 }
 
 h1 {
@@ -367,7 +370,7 @@ footer {
   max-width: $maxWidth;
   width: 100%;
   margin-bottom: 50px;
-  color: #0e0e0e;
+  color: #808080;
 }
 
 @media only screen and (min-width: 714px) {
