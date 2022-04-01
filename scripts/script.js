@@ -123,7 +123,7 @@ let setClock = function () {
   let clocks = document.querySelectorAll(".clock");
 
   let getRequest = new XMLHttpRequest();
-  let apiQuery = "https://worldclockapi.com/api/json/utc/now";
+  let apiQuery = "http://worldclockapi.com/api/json/utc/now";
   let receivedData;
   getRequest.open('GET', apiQuery);
   getRequest.onload = function () {
@@ -265,7 +265,7 @@ let beginCityAdding = function () {
   let inputValue = document.getElementById("citySelection").value;
   if (inputValue.length > 0) {
     addCity(inputValue);
-  } 
+  }
 }
 
 document.getElementById("citySelection").addEventListener('keypress', function (e) {
