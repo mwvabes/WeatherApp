@@ -123,7 +123,7 @@ let setClock = function () {
   let clocks = document.querySelectorAll(".clock");
 
   let getRequest = new XMLHttpRequest();
-  let apiQuery = "http://worldclockapi.com/api/json/utc/now";
+  let apiQuery = "https://worldclockapi.com/api/json/utc/now";
   let receivedData;
   getRequest.open('GET', apiQuery);
   getRequest.onload = function () {
