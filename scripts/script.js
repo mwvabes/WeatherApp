@@ -128,7 +128,7 @@ let setClock = function () {
   getRequest.open('GET', apiQuery);
   getRequest.onload = function () {
     receivedData = JSON.parse(getRequest.responseText);
-    let now = new Date(receivedData.currentDateTime);
+    let now = new Date(receivedData.datetime);
     for (clock of clocks) {
       let clockMessage = now.getHours() + ":";
       if (now.getMinutes() < 10) {
